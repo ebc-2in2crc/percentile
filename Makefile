@@ -31,6 +31,11 @@ devel-deps: deps
 test: deps
 	$(GOTEST) -v ./...
 
+## Build binaries
+.PHONY: build
+build: deps
+	$(GOBUILD) -ldflags "$(LDFLAGS)" -o $(BINDIR)/$(NAME) ./cmd/$(NAME)
+
 ## Format source codes
 .PHONY: fmt
 fmt: deps
