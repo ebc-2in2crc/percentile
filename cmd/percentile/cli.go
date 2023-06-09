@@ -62,7 +62,7 @@ func (c *CLI) Run() error {
 	sort.Float64s(numbers)
 
 	for _, v := range opt.pValues {
-		p := percentile.Get(numbers, v)
+		p := percentile.Calculate(numbers, v)
 		if opt.rValue {
 			_, _ = fmt.Fprintf(c.OutStream, "p%d: %.1f \n", v, p)
 		} else {

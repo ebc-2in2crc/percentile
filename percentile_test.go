@@ -25,7 +25,7 @@ func TestPercentile(t *testing.T) {
 		{percent: 99, expect: 99.5},
 		{percent: 100, expect: 100.0},
 	} {
-		actual := Get(numbers, v.percent)
+		actual := Calculate(numbers, v.percent)
 		if actual != v.expect {
 			t.Errorf("percentile(%d): Output = %f; want %f", v.percent, actual, v.expect)
 		}
