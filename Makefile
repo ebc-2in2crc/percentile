@@ -22,8 +22,9 @@ deps:
 ## Install dependencies for develop
 .PHONY: devel-deps
 devel-deps: deps
-	$(GOINSTALL) github.com/golangci/golangci-lint/cmd/golangci-lint@v1.53.2
 	$(GOINSTALL) github.com/Songmu/make2help/cmd/make2help@v0.2.1
+	$(GOINSTALL) github.com/golangci/golangci-lint/cmd/golangci-lint@v1.53.2
+	$(GOINSTALL) github.com/goreleaser/goreleaser@v1.18.2
 	$(GOINSTALL) golang.org/x/tools/cmd/goimports@latest
 
 ## Run tests
@@ -35,6 +36,11 @@ test: deps
 .PHONY: build
 build: deps
 	$(GOBUILD) -ldflags "$(LDFLAGS)" -o $(BINDIR)/$(NAME) ./cmd/$(NAME)
+
+## Cross build binaries
+.PHONY: cross-build
+cross-build:
+	goreleaser build --rm-dist
 
 ## Format source codes
 .PHONY: fmt
