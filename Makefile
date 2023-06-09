@@ -47,6 +47,11 @@ cross-build:
 package:
 	goreleaser release --snapshot --skip-publish --rm-dist
 
+## Release package to Github
+.PHONY: release
+release:
+	goreleaser release --rm-dist
+
 ## Format source codes
 .PHONY: fmt
 fmt: deps
