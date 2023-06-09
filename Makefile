@@ -36,6 +36,13 @@ test: deps
 fmt: deps
 	$(GOFMT) ./...
 
+## Clean build files
+.PHONY: clean
+clean:
+	$(GOCLEAN)
+	rm -rf $(BUILDDIR)
+
+
 ## Lint
 .PHONY: lint
 lint: devel-deps
