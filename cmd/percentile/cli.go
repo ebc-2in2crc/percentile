@@ -1,4 +1,4 @@
-package percentile
+package main
 
 import (
 	"bufio"
@@ -9,12 +9,15 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/ebc-2in2crc/percentile"
 )
 
 type options struct {
 	file    string
 	pValues []int
 	rValue  bool
+	version bool
 }
 
 // CLI is the command line interface object
@@ -54,7 +57,7 @@ func (c *CLI) Run() error {
 	sort.Float64s(numbers)
 
 	for _, v := range opt.pValues {
-		p := Get(numbers, v)
+		p := percentile.Get(numbers, v)
 		if opt.rValue {
 			_, _ = fmt.Fprintf(c.OutStream, "p%d: %.1f \n", v, p)
 		} else {
