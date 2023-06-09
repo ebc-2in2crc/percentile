@@ -25,7 +25,7 @@ type CLI struct {
 }
 
 // Run executes the CLI
-func (c *CLI) Run(args []string) error {
+func (c *CLI) Run() error {
 	opt, err := parseFlag()
 	if err != nil {
 		return fmt.Errorf("failed parse flag: %w", err)

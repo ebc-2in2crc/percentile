@@ -30,5 +30,4 @@ func TestPercentile(t *testing.T) {
 			t.Errorf("percentile(%d): Output = %f; want %f", v.percent, actual, v.expect)
 		}
 	}
-
 }
