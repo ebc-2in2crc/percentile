@@ -12,6 +12,7 @@ import (
 )
 
 type options struct {
+	file    string
 	pValues []int
 	rValue  bool
 }
@@ -30,7 +31,13 @@ func (c *CLI) Run(args []string) error {
 		return fmt.Errorf("failed parse flag: %w", err)
 	}
 
-	scanner := bufio.NewScanner(os.Stdin)
+	f, err := openFile(opt.file)
+	if err != nil {
+		return fmt.Errorf("failed open file: %w", err)
+	}
+	defer f.Close()
+
+	scanner := bufio.NewScanner(f)
 	var numbers []float64
 	for scanner.Scan() {
 		line := scanner.Text()
@@ -39,6 +46,9 @@ func (c *CLI) Run(args []string) error {
 			return fmt.Errorf("failed parse float: %w", err)
 		}
 		numbers = append(numbers, num)
+	}
+	if err := scanner.Err(); err != nil {
+		return fmt.Errorf("failed scan file: %w", err)
 	}
 
 	sort.Float64s(numbers)
@@ -60,6 +70,11 @@ func parseFlag() (*options, error) {
 	rOption := flag.Bool("r", false, "Don't Round percentile values")
 	flag.Parse()
 
+	file := "-"
+	if len(flag.Args()) > 0 {
+		file = flag.Args()[0]
+	}
+
 	// -p オプションをパースする
 	var pValues []int
 	for _, v := range strings.Split(*pOption, ",") {
@@ -74,8 +89,16 @@ func parseFlag() (*options, error) {
 	}
 
 	opt := &options{
+		file:    file,
 		pValues: pValues,
 		rValue:  *rOption,
 	}
 	return opt, nil
+}
+
+func openFile(file string) (io.ReadCloser, error) {
+	if file == "-" {
+		return io.NopCloser(os.Stdin), nil
+	}
+	return os.Open(file)
 }
