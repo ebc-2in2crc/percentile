@@ -34,6 +34,11 @@ func (c *CLI) Run() error {
 		return fmt.Errorf("failed parse flag: %w", err)
 	}
 
+	if opt.version {
+		_, _ = fmt.Fprintf(c.OutStream, "percentile version %s\n", version)
+		return nil
+	}
+
 	f, err := openFile(opt.file)
 	if err != nil {
 		return fmt.Errorf("failed open file: %w", err)
@@ -71,6 +76,7 @@ func (c *CLI) Run() error {
 func parseFlag() (*options, error) {
 	pOption := flag.String("p", "25,50,75,80,90,95,99", "Specify percentiles (comma-separated list of integers)")
 	rOption := flag.Bool("r", false, "Don't Round percentile values")
+	version := flag.Bool("v", false, "Show version")
 	flag.Parse()
 
 	file := "-"
@@ -95,6 +101,7 @@ func parseFlag() (*options, error) {
 		file:    file,
 		pValues: pValues,
 		rValue:  *rOption,
+		version: *version,
 	}
 	return opt, nil
 }

@@ -3,12 +3,12 @@ package main
 import (
 	"fmt"
 	"os"
-
-	"github.com/ebc-2in2crc/percentile"
 )
 
+var version = "0.0.1"
+
 func main() {
-	cli := percentile.CLI{
+	cli := CLI{
 		InStream:  os.Stdin,
 		OutStream: os.Stdout,
 		ErrStream: os.Stderr,
