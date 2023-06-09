@@ -31,6 +31,11 @@ devel-deps: deps
 test: deps
 	$(GOTEST) -v ./...
 
+## Format source codes
+.PHONY: fmt
+fmt: deps
+	$(GOFMT) ./...
+
 ## Lint
 .PHONY: lint
 lint: devel-deps
