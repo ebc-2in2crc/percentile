@@ -1,6 +1,7 @@
 package percentile
 
 // Calculate returns the percentile value of the given numbers.
+// The numbers must be sorted in ascending order.
 func Calculate(numbers []float64, percent int) float64 {
 	if percent == 0 {
 		return numbers[0]
