@@ -77,6 +77,12 @@ Download from the following url.
 
 - [https://github.com/ebc-2in2crc/percentile/releases](https://github.com/ebc-2in2crc/percentile/releases)
 
+Or, you can use Homebrew.
+
+```bash
+$ brew install ebc-2in2crc/tap/percentile
+```
+
 ## Contribution
 
 1. Fork this repository
