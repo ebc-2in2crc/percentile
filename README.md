@@ -2,6 +2,12 @@
 
 # percentile
 
+[![test](https://github.com/ebc-2in2crc/percentile/actions/workflows/test.yml/badge.svg)](https://github.com/ebc-2in2crc/percentile/actions/workflows/test.yml)
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ebc-2in2crc/percentile)](https://goreportcard.com/report/github.com/ebc-2in2crc/percentile)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/ebc-2in2crc/percentile)](https://img.shields.io/github/go-mod/go-version/ebc-2in2crc/percentile)
+[![Version](https://img.shields.io/github/release/ebc-2in2crc/percentile.svg?label=version)](https://img.shields.io/github/release/ebc-2in2crc/percentile.svg?label=version)
+
 `percentile` calculates the percentile of the entered number.
 
 ## Description
