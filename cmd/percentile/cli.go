@@ -59,6 +59,10 @@ func (c *CLI) Run() error {
 		return fmt.Errorf("failed scan file: %w", err)
 	}
 
+	if len(numbers) == 0 {
+		return nil
+	}
+
 	sort.Float64s(numbers)
 
 	for _, v := range opt.pValues {
