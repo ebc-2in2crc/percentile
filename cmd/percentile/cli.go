@@ -78,7 +78,7 @@ func (c *CLI) Run() error {
 }
 
 func parseFlag() (*options, error) {
-	pOption := flag.String("p", "25,50,75,80,90,95,99", "Specify percentiles (comma-separated list of integers)")
+	pOption := flag.String("p", "25,50,75,90,95,99", "Specify percentiles (comma-separated list of integers)")
 	rOption := flag.Bool("r", false, "Don't Round percentile values")
 	version := flag.Bool("v", false, "Show version")
 	flag.Parse()

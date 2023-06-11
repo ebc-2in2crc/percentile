@@ -24,7 +24,6 @@ $ percentile <(seq 1 100)
 p25: 25
 p50: 50
 p75: 75
-p80: 80
 p90: 90
 p95: 95
 p99: 99
@@ -34,7 +33,6 @@ $ seq 1 100 | percentile -
 p25: 25
 p50: 50
 p75: 75
-p80: 80
 p90: 90
 p95: 95
 p99: 99
@@ -49,7 +47,6 @@ $ seq 1 100 | percentile -r -
 p25: 25.5
 p50: 50.5
 p75: 75.5
-p80: 80.5
 p90: 90.5
 p95: 95.5
 p99: 99.5
@@ -58,7 +55,7 @@ p99: 99.5
 $ percentile -h
 Usage of percentile:
   -p string
-    	Specify percentiles (comma-separated list of integers) (default "25,50,75,80,90,95,99")
+    	Specify percentiles (comma-separated list of integers) (default "25,50,75,90,95,99")
   -r	Don't Round percentile values
   -v	Show version
 ```
